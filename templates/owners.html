@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>Owners</title>
+</head>
+<body>
+    <div class="container">
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">Owner</th>
+                  <th scope="col">Datasets</th>
+                  <th scope="col">Out-of-date Datasets</th>
+                </tr>
+              </thead>
+            <tbody>
+            {% for item in owners %}
+            <tr class="replica-list">
+                <td><a href="/replicas?owner={{ item }}">{{ item }}</a></td>
+                <td>{{counts[item]}}</td>
+                <td>{{expired[item]}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+    </div>
+
+</body>
+</html>
+

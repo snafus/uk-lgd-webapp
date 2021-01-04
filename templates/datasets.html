@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>Datasets</title>
+</head>
+<body>
+    <div class="container">
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Owner</th>
+                  <th scope="col">Scope</th>
+                  <th scope="col">Created</th>
+                  <th scope="col">Last Access</th>
+                  <th scope="col">RSE</th>
+                </tr>
+              </thead>
+            <tbody>
+    {% for item in data %}
+    <tr class="replica-list">
+        <td><a href="dataset/{{ item.name }}">{{ item.name }}</a></td>
+        <td>{{ ','.join(item.owner) }}</td>
+        <td>{{ item.scope }}</a></td>
+        <td>{{ item.created_at.date() }}</td>
+        <td>{%if item.last_accessed %} {{ item.last_accessed.date() }} {% else %} n/a  {% endif %}</td>
+        <td class="text text-sm">{{ item.rse }}</td>
+    </tr>
+    {% endfor %}
+            </tbody>
+    </div>
+
+</body>
+</html>
+

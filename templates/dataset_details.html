@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+    <title>{{ item.name }}</title>
+</head>
+<body>
+
+    <div class="container">
+        <table class="table table-sm table-striped">
+            <tbody>
+                <tr><td scope="col">Scope</td><td>{{ item.scope }}</td></tr>
+                <tr><td scope="col">Name</td><td><a href="https://rucio-ui.cern.ch/search?pattern={{item.name}}">{{ item.name }}</a></td></tr>
+                <tr><td scope="col">Owner</td><td>{{ item.owner }}</td></tr>
+                <tr><td scope="col">RSE</td><td>{{ item.rse }}</td></tr>
+                <tr><td scope="col">Created</td><td>{{ item.created_at }}</td></tr>
+                <tr><td scope="col">Last Access</td><td>{{ item.last_accessed }}</td></tr>
+              </tbody>
+    </div>
+    
+</body>
+</html>
+
+
