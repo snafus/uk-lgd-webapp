@@ -19,14 +19,16 @@ mongo = PyMongo(application)
 db = mongo.db
 
 campaign = db.campaigns.find_one({'label':'Sep20'})
-campaign_limit_date = campaign['limit_date'].strftime('%Y.%m.%d')
+if campaign is None:
+    campaign_limit_date = "1970.01.01"
+    campaign = "No Campaign found"
+else:
+    campaign_limit_date = campaign['limit_date'].strftime('%Y.%m.%d')
 print(f'Using campaign {campaign}')
 print(f'               {campaign_limit_date}')
 
 @application.route('/')
 def index():
-
-
     return render_template('index.html')
 
 
